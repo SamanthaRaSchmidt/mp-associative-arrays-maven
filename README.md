@@ -1,7 +1,20 @@
 Associative Arrays
+CSC-207-01
+10/03/2024
 ==================
 
-Starter code for a CSC-207 project on associative arrays.
+Explorations with the creation and use of associative arrays.
 
-_Students must replace the contents of this file with appropriate
-contents, including class, author, date, and URL._
+Authors
+
+    Samuel A. Rebelsky (starter code).
+    Sam Schmidt
+
+Notes for the reader
+
+This project will make associate arrays.
+
+This code may be found at https://github.com/SamanthaRaSchmidt/mp-associative-arrays-maven.git. The original project can be found at https://github.com/Grinnell-CSC207/mp-associative-arrays-maven.git.
+
+Citations:
+
