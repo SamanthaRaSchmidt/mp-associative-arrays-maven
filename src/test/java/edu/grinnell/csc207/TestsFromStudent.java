@@ -25,4 +25,44 @@ public class TestsFromStudent {
   @Test
   public void alwaysPass() throws Exception {
   } // alwaysPass()
+
+  /**
+   * Will test that set works with a fairly straightforward string.
+   * @throws NullKeyException
+   */
+  @Test
+    public void schmidtSamTest01() throws NullKeyException {
+    AssociativeArray<String, String> sampleArray = new AssociativeArray<String, String>();
+    sampleArray.set("Sample", "Array");
+    assertEquals(true, sampleArray.hasKey("Sample"), "Simple setting of an array");
+  } // schmidtSamTest01()
+
+  /**
+   * Tests that remove works with a fairly simple string.
+   * @throws NullKeyException
+   */
+  @Test
+  public void schmidtSamTest02() throws NullKeyException {
+    AssociativeArray<String, String> sampleArray = new AssociativeArray<String, String>();
+    sampleArray.set("Sample", "Array");
+    assertEquals(true, sampleArray.hasKey("Sample"), 
+    "Did it set the array?");
+    sampleArray.remove("Sample");
+    assertFalse(sampleArray.hasKey("Sample"), 
+    "Did it remove a key?");
+  } // schmidtsSamTest02()
+
+  /**
+   * Tests how set and get handle special characters like newline.
+   * @throws NullKeyException
+   * @throws KeyNotFoundException 
+   */
+  @Test
+  public void schmidtSamEdge01() throws KeyNotFoundException, NullKeyException {
+    AssociativeArray<String, String> sampleArray = new AssociativeArray<String, String>();
+    sampleArray.set("/nhi/n", "/nthere/n");
+    assertThrows(new NullKeyException(), sampleArray.get("/n/hi/n"), 
+    "Do the newlines hinder the ability to get a value?");
+  } // schmidtSamEdge01()
+
 } // class TestsFromSam
