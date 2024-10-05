@@ -61,9 +61,17 @@ public class AssociativeArray<K, V> {
    * @return a new copy of the array
    */
   public AssociativeArray<K, V> clone() {
+    // KVPair<K, V>[] clone;
+    AssociativeArray<K, V> clone = new AssociativeArray<K, V>();
+    for (int i = 0; i < size; i++) {
+      try {
+        clone.set(pairs[i].key, pairs[i].val);
+      } catch (NullKeyException e) {
+        System.err.println("Key not found");
+      }
+    } // for
 
-
-    return null; // STUB
+    return clone;
   } // clone()
 
   /**
@@ -113,6 +121,7 @@ public class AssociativeArray<K, V> {
     int found = find(key);
     if (found != -1) {
       pairs[found] = (new KVPair<K, V>(key, value));
+      size--;
     } else {
       int index = 0;
       while(pairs[index] != null) {
