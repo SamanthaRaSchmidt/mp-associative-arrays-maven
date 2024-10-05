@@ -34,7 +34,7 @@ public class AssociativeArray<K, V> {
   /**
    * The array of key/value pairs.
    */
-  KVPair<K, V> pairs[];
+  KVPair<K, V>[] pairs;
 
   // +--------------+------------------------------------------------
   // | Constructors |
@@ -61,6 +61,8 @@ public class AssociativeArray<K, V> {
    * @return a new copy of the array
    */
   public AssociativeArray<K, V> clone() {
+
+
     return null; // STUB
   } // clone()
 
@@ -70,7 +72,18 @@ public class AssociativeArray<K, V> {
    * @return a string of the form "{Key0:Value0, Key1:Value1, ... KeyN:ValueN}"
    */
   public String toString() {
-    return "{}"; // STUB
+    String arrayString = "{";
+    for (int i = 0; i < size; i++) {
+      String key = pairs[i].key.toString();
+      String val = pairs[i].val.toString();
+      if (i == size - 1) {
+        arrayString = arrayString + key + ":" + val;
+      } else {
+      arrayString = arrayString + key + ":" + val + ", ";
+      } //elseif
+    } // for
+    arrayString = arrayString.concat("}");
+    return arrayString;
   } // toString()
 
   // +----------------+----------------------------------------------
@@ -94,6 +107,9 @@ public class AssociativeArray<K, V> {
       throw new NullKeyException();
     } //endif
     size++;
+    if (size > pairs.length) {
+      expand();
+    } //endif
     int found = find(key);
     if (found != -1) {
       pairs[found] = (new KVPair<K, V>(key, value));
@@ -102,7 +118,6 @@ public class AssociativeArray<K, V> {
       while(pairs[index] != null) {
         index++;
       } //while
-  
       pairs[index] = (new KVPair<K, V>(key, value));
     } // end ifelse
   } // set(K,V)
@@ -148,6 +163,7 @@ public class AssociativeArray<K, V> {
     int found = find(key);
     if (found == -1) {
     } else {
+      size--;
       pairs[found] = null;
     }
   } // remove(K)

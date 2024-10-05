@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 /**
  * A place for you to put your own tests (beyond the shared repo).
  *
- * @author Your Name Here
+ * @author Sam Schmidt
  */
 public class TestsFromStudent {
   /**
@@ -60,9 +60,7 @@ public class TestsFromStudent {
   @Test
   public void schmidtSamEdge01() throws KeyNotFoundException, NullKeyException {
     AssociativeArray<String, String> sampleArray = new AssociativeArray<String, String>();
-    sampleArray.set("/nhi/n", "/nthere/n");
-    assertThrows(new NullKeyException(), sampleArray.get("/n/hi/n"), 
-    "Do the newlines hinder the ability to get a value?");
+    sampleArray.set("\nhi\n", "\nthere\n");
+    assertEquals("\nthere\n", sampleArray.get("\nhi\n"), "Do newlines work?");
   } // schmidtSamEdge01()
-
 } // class TestsFromSam

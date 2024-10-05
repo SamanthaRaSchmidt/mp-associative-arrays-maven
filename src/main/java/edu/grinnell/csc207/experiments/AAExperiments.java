@@ -93,6 +93,7 @@ public class AAExperiments {
    *   When something goes wrong. Usually an I/O issue or an unexpected
    *   Associative Array hiccup.
    */
+  @SuppressWarnings("unchecked")
   public static void main(String[] args) throws Exception {
     PrintWriter pen = new PrintWriter(System.out, true);
 
