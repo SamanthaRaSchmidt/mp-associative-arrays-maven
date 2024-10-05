@@ -68,7 +68,7 @@ public class AssociativeArray<K, V> {
         clone.set(pairs[i].key, pairs[i].val);
       } catch (NullKeyException e) {
         System.err.println("Key not found");
-      }
+      } // try/catch
     } // for
 
     return clone;
@@ -87,7 +87,7 @@ public class AssociativeArray<K, V> {
       if (i == size - 1) {
         arrayString = arrayString + key + ":" + val;
       } else {
-      arrayString = arrayString + key + ":" + val + ", ";
+        arrayString = arrayString + key + ":" + val + ", ";
       } //elseif
     } // for
     arrayString = arrayString.concat("}");
@@ -102,9 +102,9 @@ public class AssociativeArray<K, V> {
    * Set the value associated with key to value. Future calls to
    * get(key) will return value.
    *
-   * @param K
+   * @param key
    *   The key whose value we are seeting.
-   * @param V
+   * @param value
    *   The value of that key.
    *
    * @throws NullKeyException
@@ -124,7 +124,7 @@ public class AssociativeArray<K, V> {
       size--;
     } else {
       int index = 0;
-      while(pairs[index] != null) {
+      while (pairs[index] != null) {
         index++;
       } //while
       pairs[index] = (new KVPair<K, V>(key, value));
@@ -139,20 +139,28 @@ public class AssociativeArray<K, V> {
    *
    * @throws KeyNotFoundException
    *   when the key is null or does not appear in the associative array.
+   *
+   * @return V
+   *  The value associated with the key
    */
   public V get(K key) throws KeyNotFoundException {
     int found = find(key);
     try {
-      return pairs[found].val;}
-      catch (Exception e) {
-        throw new KeyNotFoundException();
-      } // try/catch
-
+      return pairs[found].val;
+    } catch (Exception e) {
+      throw new KeyNotFoundException();
+    } // try/catch
   } // get(K)
 
   /**
    * Determine if key appears in the associative array. Should
    * return false for the null key.
+   *
+   * @param key
+   *  The key searching for.
+   *
+   * @return boolean
+   *  True if found, false if not.
    */
   public boolean hasKey(K key) {
     int found = find(key);
@@ -160,7 +168,7 @@ public class AssociativeArray<K, V> {
       return false;
     } else {
       return true;
-    }
+    } //endif
   } // hasKey(K)
 
   /**
@@ -174,11 +182,13 @@ public class AssociativeArray<K, V> {
     } else {
       size--;
       pairs[found] = null;
-    }
+    } //endif
   } // remove(K)
 
   /**
    * Determine how many key/value pairs are in the associative array.
+   * @return
+   *  The amount of elements in the array.
    */
   public int size() {
     return this.size;
@@ -204,6 +214,9 @@ public class AssociativeArray<K, V> {
    *
    * @throws KeyNotFoundException
    *   If the key does not appear in the associative array.
+   *
+   * @return int
+   *  The index of the key
    */
   int find(K key) {
     String stringKey = key.toString();
@@ -218,6 +231,6 @@ public class AssociativeArray<K, V> {
         return i;
       } //endif
     } // for
-      return -1;
+    return -1;
   } // find(K)
 } // class AssociativeArray

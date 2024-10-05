@@ -40,7 +40,7 @@ class KVPair<K, V> {
    *
    * @param pairKey
    *   The key of the new pair.
-   * 
+   *
    * @param pairValue
    *  The value of the new pair.
    */
